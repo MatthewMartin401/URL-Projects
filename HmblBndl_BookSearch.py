@@ -12,12 +12,16 @@ from selenium import webdriver
 from selenium.webdriver.common.by import By
 import time
 import urllib.parse
+import sys
 
 
 #  Goes to website and gets all items
 URL = ""
 if URL == "" or URL == None:
-    URL = input("Please enter Bundle URL: \n")
+    # URL = input("Bundle URL: ")
+    URL = str(sys.argv[1])  #  When used in Batch Scripts, index 0 is the script.
+# print(len(sys.argv))
+print(f"URL entered is: {URL}")
 browser = webdriver.Chrome()
 browser.get(URL)
 itemName = "item-title"  #  Not loading in the html. Needs a delay which requests library doesn't support. Changed to Selenium.
